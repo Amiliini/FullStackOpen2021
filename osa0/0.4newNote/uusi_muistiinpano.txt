@@ -1,0 +1,19 @@
+title 0.4 uusi muistiinpano
+
+note over browser :käyttäjä kirjoittaa muistiinpanon ja painaa "save"
+
+browser->server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+
+server->browser: HTTP-vastaus 302 eli redirecting
+
+
+browser->server:HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server->browser: HTML
+browser->server:HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server->browser: main.css
+browser->server:HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server->browser: main.js
+browser->server:HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server->browser: data.json
+browser->server:HTTP GET https://studies.cs.helsinki.fi/exampleapp/favico.ico
+server->browser: text/html
