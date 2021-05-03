@@ -24,16 +24,6 @@ const App = () => {
       <Header kurssitiedot={kurssitiedot} />
       <Content kurssitiedot={kurssitiedot} />
       <Total kurssitiedot={kurssitiedot} />
-      {/* <p>
-        {part1} {exercises1}
-      </p>
-      <p>
-        {part2} {exercises2}
-      </p>
-      <p>
-        {part3} {exercises3}
-      </p>
-      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p> */}
     </div>
   );
 };
@@ -48,17 +38,27 @@ const Header = (props) => {
 const Content = (props) => {
   return (
     <>
+      <Part
+        title={props.kurssitiedot.osat[0].title}
+        exercises={props.kurssitiedot.osat[0].exercises}
+      />
+      <Part
+        title={props.kurssitiedot.osat[1].title}
+        exercises={props.kurssitiedot.osat[1].exercises}
+      />
+      <Part
+        title={props.kurssitiedot.osat[2].title}
+        exercises={props.kurssitiedot.osat[2].exercises}
+      />
+    </>
+  );
+};
+
+const Part = (props) => {
+  return (
+    <>
       <p>
-        {props.kurssitiedot.osat[0].title}{" "}
-        {props.kurssitiedot.osat[0].exercises}
-      </p>{" "}
-      <p>
-        {props.kurssitiedot.osat[1].title}{" "}
-        {props.kurssitiedot.osat[1].exercises}
-      </p>
-      <p>
-        {props.kurssitiedot.osat[2].title}{" "}
-        {props.kurssitiedot.osat[2].exercises}
+        {props.title} tehtäviä: {props.exercises}
       </p>
     </>
   );
@@ -67,6 +67,7 @@ const Content = (props) => {
 const Total = (props) => {
   return (
     <p>
+      Yhteensä:
       {props.kurssitiedot.osat[0].exercises +
         props.kurssitiedot.osat[1].exercises +
         props.kurssitiedot.osat[2].exercises}
