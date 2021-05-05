@@ -1,77 +1,62 @@
 import React from "react";
 
 const App = () => {
-  const kurssitiedot = {
-    nimi: "Half Stack application development",
-    osat: [
-      {
-        title: "Fundamentals of React",
-        exercises: 10,
-      },
-      {
-        title: "Using props to pass data",
-        exercises: 7,
-      },
-      {
-        title: "State of a component",
-        exercises: 14,
-      },
-    ],
+  const course = "Half Stack application development";
+  const part1 = {
+    name: "Fundamentals of React",
+    exercises: 10,
+  };
+  const part2 = {
+    name: "Using props to pass data",
+    exercises: 7,
+  };
+  const part3 = {
+    name: "State of a component",
+    exercises: 14,
+  };
+  console.log(course);
+  const Header = (props) => {
+    return (
+      <>
+        <h1>{course}</h1>
+      </>
+    );
+  };
+  const Content = (props) => {
+    console.log(part1.name);
+    return (
+      <>
+        <Part name={part1.name} exercises={part1.exercises} />
+        <Part name={part2.name} exercises={part2.exercises} />
+        <Part name={part3.name} exercises={part3.exercises} />
+      </>
+    );
+  };
+
+  const Part = (props) => {
+    return (
+      <>
+        <p>
+          {props.name} {props.exercises}
+        </p>
+      </>
+    );
+  };
+  const Total = (props) => {
+    return (
+      <p>
+        Number of exercises
+        {part1.exercises + part2.exercises + part3.exercises}
+      </p>
+    );
   };
 
   return (
     <div>
-      <Header kurssitiedot={kurssitiedot} />
-      <Content kurssitiedot={kurssitiedot} />
-      <Total kurssitiedot={kurssitiedot} />
+      <Header />
+      <Content />
+      <Total />
     </div>
-  );
-};
-const Header = (props) => {
-  return (
-    <>
-      <h1>{props.kurssitiedot.nimi}</h1>
-    </>
-  );
-};
-
-const Content = (props) => {
-  return (
-    <>
-      <Part
-        title={props.kurssitiedot.osat[0].title}
-        exercises={props.kurssitiedot.osat[0].exercises}
-      />
-      <Part
-        title={props.kurssitiedot.osat[1].title}
-        exercises={props.kurssitiedot.osat[1].exercises}
-      />
-      <Part
-        title={props.kurssitiedot.osat[2].title}
-        exercises={props.kurssitiedot.osat[2].exercises}
-      />
-    </>
-  );
-};
-
-const Part = (props) => {
-  return (
-    <>
-      <p>
-        {props.title} tehtäviä: {props.exercises}
-      </p>
-    </>
-  );
-};
-
-const Total = (props) => {
-  return (
-    <p>
-      Yhteensä:
-      {props.kurssitiedot.osat[0].exercises +
-        props.kurssitiedot.osat[1].exercises +
-        props.kurssitiedot.osat[2].exercises}
-    </p>
   );
 };
 
