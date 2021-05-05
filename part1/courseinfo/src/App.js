@@ -14,7 +14,7 @@ const App = () => {
     name: "State of a component",
     exercises: 14,
   };
-  console.log(course);
+
   const Header = (props) => {
     return (
       <>
@@ -23,7 +23,6 @@ const App = () => {
     );
   };
   const Content = (props) => {
-    console.log(part1.name);
     return (
       <>
         <Part name={part1.name} exercises={part1.exercises} />
