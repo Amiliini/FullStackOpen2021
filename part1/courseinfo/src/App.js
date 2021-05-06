@@ -2,59 +2,73 @@ import React from "react";
 
 const App = () => {
   const course = "Half Stack application development";
-  const part1 = {
-    name: "Fundamentals of React",
-    exercises: 10,
-  };
-  const part2 = {
-    name: "Using props to pass data",
-    exercises: 7,
-  };
-  const part3 = {
-    name: "State of a component",
-    exercises: 14,
-  };
+  const parts = [
+    {
+      name: "Fundamentals of React",
+      exercises: 10,
+    },
+    {
+      name: "Using props to pass data",
+      exercises: 7,
+    },
+    {
+      name: "State of a component",
+      exercises: 14,
+    },
+  ];
 
-  const Header = (props) => {
+  const Header = () => {
     return (
       <>
         <h1>{course}</h1>
       </>
     );
   };
-  const Content = (props) => {
+  const Content = () => {
+    console.log(parts);
     return (
       <>
-        <Part name={part1.name} exercises={part1.exercises} />
-        <Part name={part2.name} exercises={part2.exercises} />
-        <Part name={part3.name} exercises={part3.exercises} />
+        <p>
+          {parts[0].name} {parts[0].exercises}
+        </p>
+        <p>
+          {parts[1].name} {parts[1].exercises}
+        </p>
+        <p>
+          {parts[2].name} {parts[2].exercises}
+        </p>
+
+        {/* <Part name={parts[0].name} exercises={parts[0].exercises} />
+        <Part name={parts[1].name} exercises={parts[1].exercises} />
+        <Part name={parts[2].name} exercises={parts[2].exercises} /> */}
       </>
     );
   };
 
-  const Part = (props) => {
-    return (
-      <>
-        <p>
-          {props.name} {props.exercises}
-        </p>
-      </>
-    );
-  };
-  const Total = (props) => {
+  // const Part = () => {
+  //   return (
+  //     <>
+  //       <p>
+  //         {parts.name} {parts.exercises}
+  //       </p>
+  //     </>
+  //   );
+  // };
+  const Total = () => {
+    console.log(parts);
     return (
       <p>
-        Number of exercises
-        {part1.exercises + part2.exercises + part3.exercises}
+        Number of exercises{" "}
+        {parts[0].exercises + parts[1].exercises + parts[2].exercises}
       </p>
     );
   };
 
   return (
     <div>
-      <Header />
-      <Content />
-      <Total />
+      <Header course={course} />
+      <Content parts={parts} />
+      <Total parts={parts} />
     </div>
   );
 };
